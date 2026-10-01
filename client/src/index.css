@@ -1,0 +1,178 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────
+   Design Tokens
+───────────────────────────────────────────── */
+@layer base {
+  :root {
+    --bg-primary: #f5f7f8;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #eef3f4;
+    --text-primary: #152f3a;
+    --text-secondary: #657781;
+    --text-muted: #71848e;
+    --border-color: #e1e8eb;
+    --border-subtle: #f0eeea;
+    --scrollbar-thumb: #d6d3cd;
+
+    --brand-glow: rgba(8, 126, 116, 0.15);
+  }
+
+  .dark {
+    --bg-primary: #0e1b22;
+    --bg-secondary: #142630;
+    --bg-tertiary: #1b3440;
+    --text-primary: #fafaf9;
+    --text-secondary: #9bafb8;
+    --text-muted: #9bafb8;
+    --border-color: #29404a;
+    --border-subtle: #1f1e1b;
+    --scrollbar-thumb: #3d3b36;
+
+    --brand-glow: rgba(85, 203, 180, 0.15);
+  }
+
+  * {
+    border-color: var(--border-color);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply font-sans;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: #9e9d96; }
+}
+
+/* ─────────────────────────────────────────────
+   Component Layer
+───────────────────────────────────────────── */
+@layer components {
+
+  /* === Card === */
+  .card {
+    @apply bg-white dark:bg-[#1c1b18] border border-stone-200/80 dark:border-white/[0.06] rounded-2xl;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.02);
+  }
+
+  .dark .card {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.04);
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-0.5 transition-all duration-200;
+    &:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.04);
+    }
+  }
+
+  /* === Glass === */
+  .glass {
+    @apply bg-white/60 dark:bg-[#1c1b18]/70 backdrop-blur-xl border border-stone-200/40 dark:border-white/[0.05];
+  }
+
+  /* === Buttons === */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-700 active:scale-[0.98] text-white font-semibold text-sm tracking-tight transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 dark:focus:ring-offset-[#111110] disabled:opacity-40 disabled:pointer-events-none shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-xl bg-stone-100 dark:bg-white/[0.06] hover:bg-stone-200 dark:hover:bg-white/[0.10] active:scale-[0.98] text-stone-700 dark:text-stone-300 font-medium text-sm tracking-tight transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 dark:focus:ring-offset-[#111110] disabled:opacity-40 disabled:pointer-events-none;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-xl hover:bg-stone-100 dark:hover:bg-white/[0.06] active:scale-[0.98] text-stone-600 dark:text-stone-400 font-medium text-sm transition-all duration-150 focus:outline-none disabled:opacity-40 disabled:pointer-events-none;
+  }
+
+  /* === Inputs === */
+  .input-base {
+    @apply w-full px-3.5 py-2.5 rounded-xl bg-stone-50 dark:bg-white/[0.04] border border-stone-200 dark:border-white/[0.08] text-stone-900 dark:text-stone-50 placeholder-stone-400 dark:placeholder-stone-600 text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-violet-500/60 focus:border-violet-400 dark:focus:border-violet-500/50 focus:bg-white dark:focus:bg-white/[0.06];
+  }
+
+  .label-base {
+    @apply block text-xs font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-widest mb-1.5;
+  }
+
+  /* === Gradient Text === */
+  .gradient-text {
+    @apply bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent;
+  }
+
+  /* === Section Tag === */
+  .section-tag {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-violet-50 dark:bg-violet-950/40 text-violet-700 dark:text-violet-300 border border-violet-100 dark:border-violet-800/40;
+  }
+
+  /* === Skeleton === */
+  .skeleton {
+    @apply bg-stone-200 dark:bg-white/[0.06] rounded-xl animate-pulse;
+  }
+
+  /* === Nav item active bar === */
+  .nav-active-bg {
+    @apply bg-violet-50 dark:bg-violet-500/[0.12] text-violet-700 dark:text-violet-300;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Utility Layer
+───────────────────────────────────────────── */
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Noise texture overlay for header/hero sections */
+  .noise-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    pointer-events: none;
+  }
+
+  /* Dot-grid background pattern */
+  .dot-grid {
+    background-image: radial-gradient(circle, #d4d0cb 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  .dark .dot-grid {
+    background-image: radial-gradient(circle, #2d2c28 1px, transparent 1px);
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Custom Keyframes
+───────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0%   { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

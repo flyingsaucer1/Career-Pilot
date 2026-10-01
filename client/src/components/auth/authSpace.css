@@ -1,0 +1,93 @@
+.auth-space-panel {
+  background:
+    radial-gradient(circle at 48% 35%, rgba(26, 88, 109, .38), transparent 43%),
+    radial-gradient(circle at 9% 85%, rgba(80, 54, 115, .19), transparent 44%),
+    #071927;
+}
+
+.auth-space-grain {
+  pointer-events: none;
+  opacity: .13;
+  background-image: radial-gradient(circle, #a6d9d6 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 80%, transparent);
+}
+
+.auth-space-cursor-light {
+  position: absolute;
+  z-index: 0;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(73, 221, 204, .14), rgba(73, 221, 204, .045) 38%, transparent 70%);
+  pointer-events: none;
+}
+
+.auth-space-scene {
+  isolation: isolate;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 86%, transparent 100%);
+}
+
+.auth-space-scene::before {
+  content: '';
+  position: absolute;
+  inset: 38% 15% -18%;
+  z-index: -1;
+  border-radius: 50%;
+  background: rgba(54, 208, 207, .16);
+  filter: blur(48px);
+}
+
+.auth-space-star { animation: auth-star-twinkle 3.5s ease-in-out infinite; }
+.auth-space-orbit-path { animation: auth-orbit-dash 22s linear infinite; }
+
+.auth-space-exhaust {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 74%;
+  width: 30px;
+  height: 100px;
+  transform: translateX(-50%);
+  border-radius: 50% 50% 65% 65%;
+  background: linear-gradient(to bottom, #fff4bb, #eeb975 23%, rgba(83, 233, 222, .58) 62%, transparent);
+  filter: blur(7px);
+  opacity: .8;
+  animation: auth-engine-pulse 1.7s ease-in-out infinite;
+}
+
+.auth-space-satellite {
+  position: absolute;
+  z-index: 4;
+  padding: 7px 10px 7px 7px;
+  border: 1px solid rgba(154, 240, 229, .24);
+  border-radius: 999px;
+  background: rgba(9, 35, 51, .86);
+  box-shadow: 0 10px 28px rgba(0, 10, 22, .28), inset 0 1px 0 rgba(255, 255, 255, .08);
+  color: #e9fffd;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  white-space: nowrap;
+  backdrop-filter: blur(12px);
+}
+
+.auth-space-satellite-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background: rgba(74, 223, 206, .17);
+  color: #83ecdf;
+}
+
+@keyframes auth-star-twinkle { 50% { opacity: .35; } }
+@keyframes auth-orbit-dash { to { stroke-dashoffset: -160; } }
+@keyframes auth-engine-pulse { 50% { opacity: .53; transform: translateX(-50%) scaleX(.8) scaleY(.82); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-space-star, .auth-space-orbit-path, .auth-space-exhaust { animation: none; }
+}

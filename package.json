@@ -1,0 +1,10 @@
+{
+  "name": "careerpilot-deployment",
+  "private": true,
+  "engines": { "node": "24.x" },
+  "scripts": {
+    "build": "npm run build --prefix server && npm run build --prefix client",
+    "test": "npm test --prefix server && npm run test:integration --prefix server && npm test --prefix client && npm run test:deployment",
+    "test:deployment": "node --test test/deployment.test.cjs"
+  }
+}
