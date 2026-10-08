@@ -9,7 +9,7 @@
     { "source": "/api/:path*", "destination": "/api/index?__route=:path*" },
     { "source": "/((?!assets/).*)", "destination": "/index.html" }
   ],
-  "crons": [{ "path": "/api/internal/cleanup", "schedule": "0 * * * *" }],
+  "crons": [{ "path": "/api/internal/cleanup", "schedule": "0 2 * * *" }],
   "headers": [{
     "source": "/(.*)",
     "headers": [
